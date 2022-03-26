@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(ur_rtde_examples)
 
-set(DIR ${CMAKE_CURRENT_SOURCE_DIR})
-message(STATUS "${DIR}")
-find_package(ur_rtde REQUIRED PATHS "${DIR}/../../Build/ur_rtde" "${DIR}/../../build/ur_rtde")
+set(ur_rtde_DIR "/usr/local/lib/cmake/ur_rtde/")
+find_package(ur_rtde REQUIRED )
 
 add_executable(forcemode_example forcemode_example.cpp)
 target_link_libraries(forcemode_example PUBLIC ur_rtde::rtde)

@@ -38,7 +38,7 @@ int main(int argc, char **argv)
   new_q[0] += 0.3;
 
   unsigned char sendBuffer[] = {0x55, 0XAA, 0x04, 0x02, 0x20, 0x37, 0xE8, 0x00, 0X49};
-
+  //给驱动器发指令
   serialPort->write_some(boost::asio::buffer(sendBuffer, sizeof(sendBuffer)));
 
   rtde_control.moveJ(new_q, 1.05, 1.4, false);

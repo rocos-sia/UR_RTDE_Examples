@@ -37,14 +37,20 @@ int main(int argc, char **argv)
   std::vector<double> new_q = init_q;
   new_q[0] += 0.3;
 
-  unsigned char sendBuffer[] = {0x55, 0XAA, 0x04, 0x02, 0x20, 0x37, 0xE8, 0x00, 0X49};
+  unsigned char sendBuffer[] = {0x55, 0XAA, 0x04, 0x01, 0x03, 0x37, 0x14, 0x05, 0X76};
   //给驱动器发指令
-  //serialPort这里不是指针，用.而不用->
+  // serialPort这里不是指针，用.而不用->
   serialPort.write_some(boost::asio::buffer(sendBuffer, sizeof(sendBuffer)));
 
-  rtde_control.moveJ(new_q, 1.05, 1.4, false);
+  //   sendBuffer[] = {0x55, 0XAA, 0x04, 0x01, 0x03, 0x37, 0x14, 0x05, 0X58};
+  //   serialPort.write_some(boost::asio::buffer(sendBuffer, sizeof(sendBuffer)));
 
-  rtde_control.moveJ(init_q, 1.05, 1.4, false);
+  //  sendBuffer[] = {0x55, 0XAA, 0x04, 0x02, 0x03, 0x37, 0x14, 0x05, 0X58};
+  //   serialPort.write_some(boost::asio::buffer(sendBuffer, sizeof(sendBuffer)));
+
+  // rtde_control.moveJ(new_q, 1.05, 1.4, false);
+
+  // rtde_control.moveJ(init_q, 1.05, 1.4, false);
 
   rtde_control.stopScript();
   //**-------------------------------**//

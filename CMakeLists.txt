@@ -3,33 +3,27 @@ project(ur_rtde_examples)
 
 set(ur_rtde_DIR "/usr/local/lib/cmake/ur_rtde/")
 find_package(ur_rtde REQUIRED )
+###################################
+set(List_official 
+forcemode_example
+move_until_contact 
+io_example 
+move_path_async_example 
+movej_path_with_blend
+servoj_example 
+speedj_example)  
+move_async_example
+robotiq_gripper_example)
+##################################
+set(List_own moving_fluid)
+##################################
 
-add_executable(forcemode_example forcemode_example.cpp)
-target_link_libraries(forcemode_example PUBLIC ur_rtde::rtde)
+set( LIst ${List_official} ${List_own})
 
-add_executable(move_until_contact move_until_contact.cpp)
-target_link_libraries(move_until_contact PUBLIC ur_rtde::rtde)
+foreach(list  ${List}  )
 
-add_executable(io io_example.cpp)
-target_link_libraries(io PUBLIC ur_rtde::rtde)
+add_executable(${list} ${list}.cpp)
+target_link_libraries(${list}  PUBLIC ur_rtde::rtde)
 
-add_executable(move_path_async_example move_path_async_example.cpp)
-target_link_libraries(move_path_async_example PUBLIC ur_rtde::rtde)
+endforeach()
 
-add_executable(movej_path_with_blend movej_path_with_blend_example.cpp)
-target_link_libraries(movej_path_with_blend PUBLIC ur_rtde::rtde)
-
-add_executable(servoj servoj_example.cpp)
-target_link_libraries(servoj PUBLIC ur_rtde::rtde)
-
-add_executable(speedj speedj_example.cpp)
-target_link_libraries(speedj PUBLIC ur_rtde::rtde)
-
-add_executable(move_async move_async_example.cpp)
-target_link_libraries(move_async PUBLIC ur_rtde::rtde)
-
-add_executable(robotiq_gripper_example robotiq_gripper_example.cpp)
-target_link_libraries(robotiq_gripper_example PUBLIC ur_rtde::rtde)
-
-add_executable(moving_fluid moving_fluid.cpp)
-target_link_libraries(moving_fluid PUBLIC ur_rtde::rtde  )
